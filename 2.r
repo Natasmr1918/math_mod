@@ -1,19 +1,19 @@
 # 2
-# Ñìèðíîâà Íàòàëüÿ ñîçäàéòå ìîäåëü ìíîæåñòâåííîé ëèíåéíîé ðåãðåññèè ïîòîêîâ 
-# ïîòîêîâ óãëåêèñëîãî ãàçà çà ëåòíèé ïåðèîä 2013 ãîäà ïî äàííûì èçìåðåíèé ìåòîäîì òóðáóëåíòíîé ïóëüñàöèè
+# Ð¡Ð¼Ð¸Ñ€Ð½Ð¾Ð²Ð° ÐÐ°Ñ‚Ð°Ð»ÑŒÑ ÑÐ¾Ð·Ð´Ð°Ð¹Ñ‚Ðµ Ð¼Ð¾Ð´ÐµÐ»ÑŒ Ð¼Ð½Ð¾Ð¶ÐµÑÑ‚Ð²ÐµÐ½Ð½Ð¾Ð¹ Ð»Ð¸Ð½ÐµÐ¹Ð½Ð¾Ð¹ Ñ€ÐµÐ³Ñ€ÐµÑÑÐ¸Ð¸ Ð¿Ð¾Ñ‚Ð¾ÐºÐ¾Ð² 
+# Ð¿Ð¾Ñ‚Ð¾ÐºÐ¾Ð² ÑƒÐ³Ð»ÐµÐºÐ¸ÑÐ»Ð¾Ð³Ð¾ Ð³Ð°Ð·Ð° Ð·Ð° Ð»ÐµÑ‚Ð½Ð¸Ð¹ Ð¿ÐµÑ€Ð¸Ð¾Ð´ 2013 Ð³Ð¾Ð´Ð° Ð¿Ð¾ Ð´Ð°Ð½Ð½Ñ‹Ð¼ Ð¸Ð·Ð¼ÐµÑ€ÐµÐ½Ð¸Ð¹ Ð¼ÐµÑ‚Ð¾Ð´Ð¾Ð¼ Ñ‚ÑƒÑ€Ð±ÑƒÐ»ÐµÐ½Ñ‚Ð½Ð¾Ð¹ Ð¿ÑƒÐ»ÑŒÑÐ°Ñ†Ð¸Ð¸
 
-#ïîäêëþ÷àåì áèáëèîòåêè
+#Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ Ð±Ð¸Ð±Ð»Ð¸Ð¾Ñ‚ÐµÐºÐ¸
 library("tidyverse") 
 library("stringr")    
 library("dplyr")      
 library("ggplot2")    
-#÷èòàåì äàííûå èç ôàéëà, ïðîïóñêàåì ïåðâóþ ñòðîêó, çàìåíÿåì òåêñòîâûå 'NA', ïóñòûå è ñãåíåðèðîâàííûå ïîðîãîâûå çíà÷åíèÿ íà NA, èãíîðèðóåì ñòðîêè ñ "[" 
+#Ñ‡Ð¸Ñ‚Ð°ÐµÐ¼ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð¸Ð· Ñ„Ð°Ð¹Ð»Ð°, Ð¿Ñ€Ð¾Ð¿ÑƒÑÐºÐ°ÐµÐ¼ Ð¿ÐµÑ€Ð²ÑƒÑŽ ÑÑ‚Ñ€Ð¾ÐºÑƒ, Ð·Ð°Ð¼ÐµÐ½ÑÐµÐ¼ Ñ‚ÐµÐºÑÑ‚Ð¾Ð²Ñ‹Ðµ 'NA', Ð¿ÑƒÑÑ‚Ñ‹Ðµ Ð¸ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ðµ Ð¿Ð¾Ñ€Ð¾Ð³Ð¾Ð²Ñ‹Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ Ð½Ð° NA, Ð¸Ð³Ð½Ð¾Ñ€Ð¸Ñ€ÑƒÐµÐ¼ ÑÑ‚Ñ€Ð¾ÐºÐ¸ Ñ "[" 
 eddypro = read_csv("eddypro.csv", skip = 1, na=c("","NA","-9999","-9999.0"), comment=c("["))
 eddypro = eddypro[-1, ]
 eddypro = select(eddypro, -(roll))
-#ïðåîáðàçóåì ñòðîêîâûå çíà÷åíèÿ â ôàêòîðíûå
+#Ð¿Ñ€ÐµÐ¾Ð±Ñ€Ð°Ð·ÑƒÐµÐ¼ ÑÑ‚Ñ€Ð¾ÐºÐ¾Ð²Ñ‹Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ Ð² Ñ„Ð°ÐºÑ‚Ð¾Ñ€Ð½Ñ‹Ðµ
 eddypro = eddypro %>% mutate_if(is.character, factor)
-#çàìåíÿåì êîíôëèêòóþùèå çíàêè êîëîíîê
+#Ð·Ð°Ð¼ÐµÐ½ÑÐµÐ¼ ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚ÑƒÑŽÑ‰Ð¸Ðµ Ð·Ð½Ð°ÐºÐ¸ ÐºÐ¾Ð»Ð¾Ð½Ð¾Ðº
 names(eddypro) = names(eddypro) %>% 
   str_replace_all("[!]", "_emph_") %>% 
   str_replace_all("[?]", "_quest_") %>% 
@@ -30,36 +30,36 @@ names(eddypro) = names(eddypro) %>%
   str_replace_all("[()]", "L_")
 
 glimpse(eddypro)
-# óáåðåì na
+# ÑƒÐ±ÐµÑ€ÐµÐ¼ na
 eddypro = drop_na(eddypro)
-#ëåòíèé ïåðèîä
+#Ð»ÐµÑ‚Ð½Ð¸Ð¹ Ð¿ÐµÑ€Ð¸Ð¾Ð´
 eddypro = filter(eddypro, DOY >= 152 & DOY < 244)
-#ïåðåìåííûå òèïîâ numeric è  íå numeric îòäåëüíî
+#Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ðµ Ñ‚Ð¸Ð¿Ð¾Ð² numeric Ð¸  Ð½Ðµ numeric Ð¾Ñ‚Ð´ÐµÐ»ÑŒÐ½Ð¾
 eddypro_numeric = eddypro[,sapply(eddypro,is.numeric) ]
 eddypro_non_numeric = eddypro[,!sapply(eddypro,is.numeric) ]
-#ñîçäàäèì âûáîðêè
+#ÑÐ¾Ð·Ð´Ð°Ð´Ð¸Ð¼ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ¸
 row_numbers = 1:length(eddypro_numeric$co2_flux)
 teach = sample(row_numbers, floor(length(eddypro_numeric$co2_flux)*.7))
 test = row_numbers[-teach]
 teaching_tbl = eddypro_numeric[teach,]
 testing_tbl = eddypro_numeric[test,]
-# ÌÎÄÅËÜ 1 ïî îáó÷àþùåé âûáîðêå
+# ÐœÐžÐ”Ð•Ð›Ð¬ 1 Ð¿Ð¾ Ð¾Ð±ÑƒÑ‡Ð°ÑŽÑ‰ÐµÐ¹ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐµ
 mod1 = lm(co2_flux~ (.) , data = teaching_tbl)
 
-#êîýôôèöèåíòû
+#ÐºÐ¾ÑÑ„Ñ„Ð¸Ñ†Ð¸ÐµÐ½Ñ‚Ñ‹
 coef(mod1)
-#îñòàòêè
+#Ð¾ÑÑ‚Ð°Ñ‚ÐºÐ¸
 resid(mod1)
-#äîâåðèòåëüíûé èíòåðâàë
+#Ð´Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ Ð¸Ð½Ñ‚ÐµÑ€Ð²Ð°Ð»
 confint(mod1)
-#P-çíà÷åíèÿ ïî ìîäåëè
+#P-Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ Ð¿Ð¾ Ð¼Ð¾Ð´ÐµÐ»Ð¸
 summary(mod1)
-#äèñïåðñèîííûé àíàëèç
+#Ð´Ð¸ÑÐ¿ÐµÑ€ÑÐ¸Ð¾Ð½Ð½Ñ‹Ð¹ Ð°Ð½Ð°Ð»Ð¸Ð·
 anova(mod1)
-#ãðàôè÷åñêîå ïðåäñòàâëåíèå ìîäåëè:
+#Ð³Ñ€Ð°Ñ„Ð¸Ñ‡ÐµÑÐºÐ¾Ðµ Ð¿Ñ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð¼Ð¾Ð´ÐµÐ»Ð¸:
 plot(mod1)
 
-# ÌÎÄÅËÜ 2
+# ÐœÐžÐ”Ð•Ð›Ð¬ 2
 mod2 = lm ( co2_flux~ DOY + file_records + Tau+qc_Tau + rand_err_Tau + H +qc_H 
             + rand_err_H + LE + qc_LE + rand_err_LE + qc_co2_flux + rand_err_co2_flux
             + h2o_flux + rand_err_h2o_flux + H_strg + co2_v_minus_adv + h2o_v_minus_adv
@@ -81,7 +81,7 @@ anova(mod2)
 anova(mod2, mod1)
 plot(mod2) 
 
-# ÌÎÄÅËÜ 3
+# ÐœÐžÐ”Ð•Ð›Ð¬ 3
 mod3 = lm ( co2_flux~ DOY + file_records + Tau + qc_Tau + rand_err_Tau + H
             + qc_H, rand_err_H + LE + qc_LE + rand_err_LE + qc_co2_flux
             + rand_err_co2_flux + h2o_flux + rand_err_h2o_flux+ H_strg
